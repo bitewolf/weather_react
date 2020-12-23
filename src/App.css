@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 body {
-  font-family: "Open Sans", serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
-.wrapper {
+.wrapperOff {
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -20,7 +20,7 @@ body {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2db0e0', endColorstr='#6028a8', GradientType=1 );
 }
 
-.main {
+.mainOff {
   height: 66vh;
   background: #2a6bb1;
   box-shadow: 0px 2px 80px -20px rgba(0,0,0,0.5);
@@ -29,7 +29,7 @@ body {
   width: 100%;
   max-width: 1140px;
 }
-.container {
+.containerOff {
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -46,8 +46,9 @@ body {
 }
 
 .info {
-  height: auto;
-  width:22vw;
+  height: 66vh;
+  min-width:52.48vh;
+  max-width:52.48vh;
   background: url("img/cards/18.error/7ad33c0e3434fb28fd5326cb8e841285.jpg") center center no-repeat;
   border: 2px solid #1f1f1f;
   border-right: 2px solid #131e29;
@@ -63,20 +64,66 @@ body {
 
 .form {
   height: auto;
-  width: 45vw;
+  width: 100%;
   max-width: 990px;
   padding-top: 100px;
-  padding-left: 50px;
+  padding-left: 40px;
   border-top: 2px solid #113a65;
   border-bottom: 2px solid #113a65;
   border-right: 2px solid #113a65;
+}
+.infoText {
+  width: 100%;
+  height: 100%;
+}
+
+.time {
+  font-size: 1.66em;
+  font-weight: 300;
+  color: antiquewhite;
+  text-shadow: 1px 1px 0px rgba(0,0,0,0.5);
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: relative;
+  padding-left: 15px;
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+
+.temp {
+  font-size: 5em;
+  font-weight: 100;
+  color: antiquewhite;
+  text-shadow: 1px 1px 0px rgba(0,0,0,0.5);
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: relative;
+  padding-left: 15px;
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+
+.tempFeels {
+  font-size: 1.75em;
+  font-weight: 300;
+  color: antiquewhite;
+  text-shadow: 1px 1px 0px rgba(0,0,0,0.5);
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: relative;
+  padding-left: 15px;
+  margin-block-start: 0em;
+  margin-block-end: 0em;
 }
 
 input[type="text"] {
   background-color: transparent;
   border: 0;
   border-bottom: solid 2px #113a65;
-  width: 50%;
+  width: 45%;
   padding-bottom: 4px;
   color: #fff;
   font-weight: lighter;
@@ -124,10 +171,6 @@ button:active {
   color: #fff;
 }
 
-.info p {
-  color: #e4e4e4;
-  font-weight: bold;
-}
 
 .infoWeath {
   width: 58%;
@@ -147,6 +190,16 @@ button:active {
 
 .overcastclouds {
   background: url("img/cards/9.Cloudy/5d7281ef993fd693a74c067b10cbe4bf.jpg") center center no-repeat;
+  background-size: cover;
+}
+
+.fewclouds.day {
+  background: url("img/cards/5.PartyCloudy/7f65837735e65c60f596eb19d2ec1a28.jpg") center center no-repeat;
+  background-size: cover;
+}
+
+.fewclouds.night {
+  background: url("img/cards/6.PartyCloudyNight/516e6460643aefb61bb2cfeb9bc06511.jpg") center center no-repeat;
   background-size: cover;
 }
 
@@ -208,4 +261,41 @@ button:active {
 .fog {
   background: url("img/cards/17.Fog/ff788cccee005416ce6da1395c3879dc.jpg") center center no-repeat;
   background-size: cover;
+}
+
+@media screen and (max-width: 1280px) {
+
+.window {
+   flex-direction: column;
+   max-width: 52.48vh;
+   height: 100%;
+   
+  }
+.form {
+  max-width: 52.48vh;
+  height: 25vh;
+  padding-top: 20px;
+  padding-left: 10px;
+  border-left: 2px solid #113a65;
+  border-top: 0px;
+   }
+.containerOff {
+  max-width: 52.48vh;
+  height: 100%;
+  
+   }
+.mainOff {
+  max-width: 52.48vh;
+  
+  height: 100%;
+  max-height: 935px;
+}
+input[type="text"]{
+  width: 50%;
+}
+
+button {
+  padding: 4px 10px;
+}
+
 }

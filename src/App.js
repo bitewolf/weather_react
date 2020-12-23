@@ -17,6 +17,7 @@ class App extends React.Component {
     sunset: undefined,
     error:  undefined,
     weather: undefined,
+    hour: undefined,
     time: undefined,
     timezone: undefined
   }
@@ -31,6 +32,9 @@ class App extends React.Component {
       console.log(data);
       console.log(data.weather[0].description);
            
+      let temp = Math.floor(data.main.temp*10) / 10;
+      let tempFeels = Math.floor(data.main.feels_like*10) / 10;
+
       let pressure = data.main.pressure;
       let pressureInMmHg = Math.floor(pressure * 0.75006);
 
@@ -40,14 +44,17 @@ class App extends React.Component {
 
       const newLocal = new Date();
       let timeLocal = newLocal;
-      let timeNow = timeLocal.getHours() + timeLocal.getTimezoneOffset()/60 + data.timezone/3600;
+      
+      let hourNow = timeLocal.getHours() + timeLocal.getTimezoneOffset()/60 + data.timezone/3600;
+      let time = timeLocal.getDate() +" "+ timeLocal.toLocaleString('ru-RU', { month: 'short' }) +" "+timeLocal.getHours() +":"+ timeLocal.getMinutes();
       
       let timeSunrise = new Intl.DateTimeFormat('ru-RU', {hour: '2-digit', minute: '2-digit', second: '2-digit'}).format(data.sys.sunrise*1000 + timeLocal.getTimezoneOffset()*60000 + data.timezone*1000);
       let timeSunset = new Intl.DateTimeFormat('ru-RU', {hour: '2-digit', minute: '2-digit', second: '2-digit'}).format(data.sys.sunset*1000 + timeLocal.getTimezoneOffset()*60000 + data.timezone*1000);
       
       this.setState({
-        temp: data.main.temp,
-        tempFeels: data.main.feels_like,
+        timeLocal: timeLocal,
+        temp: temp,
+        tempFeels: tempFeels,
         city: data.name,
         country: data.sys.country,
         pressure: pressureInMmHg,
@@ -55,10 +62,12 @@ class App extends React.Component {
         sunset: timeSunset,
         error: undefined,
         weather: weatherWithoutSpace,
-        time: timeNow
+        hour: hourNow,
+        time: time
       });
     } else {
       this.setState({
+        timeLocal: undefined,
         temp: undefined,
         tempFeels: undefined,
         city: undefined,
@@ -68,7 +77,8 @@ class App extends React.Component {
         sunset: undefined,
         weather: undefined,
         error: "Введите название города",
-        time: undefined
+        hour: undefined,
+        timeg: undefined
       });
     }
   };
@@ -77,33 +87,33 @@ class App extends React.Component {
 
   render () {
     let classWeather = 'info';
+    
     if (this.state.weather)
     {
     classWeather += ' '+this.state.weather;
     };
-    if (this.state.time) {
-      let time = this.state.time;
-      if (time < 0) {
-        time += 24;
+    if (this.state.hour) {
+      let hour = this.state.hour;
+      if (hour < 0) {
+        hour += 24;
       }
-       if (time > 23 || time < 6)
+       if (hour > 23 || hour < 6)
       {
         classWeather += ' night';
       } else {
           classWeather += ' day';
       }
     }
-
-
-    
+   
 
     return (
-      <div className="wrapper">
-        <div className="main">
-              <div className="container">
+      <div className="wrapperOff">
+        <div className="mainOff">
+              <div className="containerOff">
                 <div className="window">
                   <div className={classWeather}>
                     <Info
+                    time={this.state.time}
                     tempFeels={this.state.tempFeels}
                     temp={this.state.temp}
                     />
