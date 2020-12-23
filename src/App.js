@@ -14,24 +14,19 @@ class App extends React.Component {
     pressure: undefined,
     sunrise: undefined,
     sunset: undefined,
-    error:  undefined
+    error:  undefined,
+    weather: undefined
   }
 
   gettingWeather = async (e) => {
     e.preventDefault();
     let city = e.target.elements.city.value;
     
-
     if(city) {
       const api_url = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${API_KEY}&units=metric`);
       const data = await api_url.json();
       console.log(data);
-
-      let sunset = data.sys.sunset;
-      let date = new Date();
-      date.setTime(sunset);
-      let sunset_date = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
-
+      console.log(data.weather[0].description);
 
       
       let timeSunrise = new Intl.DateTimeFormat('ru-RU', {hour: '2-digit', minute: '2-digit', second: '2-digit'}).format(data.sys.sunrise*1000);
@@ -40,7 +35,9 @@ class App extends React.Component {
       let pressure = data.main.pressure;
       let pressureInMmHg = Math.floor(pressure * 0.75006);
 
-
+      let weatherWithoutSpace = data.weather[0].description;
+      weatherWithoutSpace = weatherWithoutSpace.replace(/ +/g, '').trim();
+      console.log(weatherWithoutSpace);
 
       this.setState({
         temp: data.main.temp,
@@ -49,7 +46,8 @@ class App extends React.Component {
         pressure: pressureInMmHg,
         sunrise: timeSunrise,
         sunset: timeSunset,
-        error: undefined
+        error: undefined,
+        weather: weatherWithoutSpace
 
       });
     } else {
@@ -60,22 +58,37 @@ class App extends React.Component {
         pressure: undefined,
         sunrise: undefined,
         sunset: undefined,
+        weather: undefined,
         error: "Введите название города"
-
       });
     }
   };
 
+  
+
   render () {
+    let classWeather = 'col-sm-4 info';
+    if (this.state.weather)
+    {
+    classWeather += ' '+this.state.weather;
+    };
+    let time = new Date();
+    if (time.getHours() > 23 && time.getHours() < 6)
+    {
+      classWeather += ' night';
+    } else 
+      classWeather += ' day';
+    ;
+
     return (
       <div className="wrapper">
         <div className="main">
               <div className="container">
                 <div className="row">
-                  <div className="col-sm-5 info">
+                  <div className={classWeather}>
                     <Info />
                   </div>
-                  <div className="col-sm-7 form">
+                  <div className="col-sm-8 form">
                     <Form weatherMethod={this.gettingWeather} />
                     <Weather 
                     temp={this.state.temp}
