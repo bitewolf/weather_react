@@ -90,7 +90,12 @@ body {
 }
 
 .snow {
-  background: url("img/cards/19.snow/5fa058b377481f2c89fb39300a62cf94.jpg") center center no-repeat;
+  background: url("img/cards/19.Snow/5fa058b377481f2c89fb39300a62cf94.jpg") center center no-repeat;
+  background-size: cover;
+}
+
+.showersnow {
+  background: url("img/cards/20.RainSnow/f1b74d5c41f02e57fe0374cd913e5e6a.jpg") center center no-repeat;
   background-size: cover;
 }
 
