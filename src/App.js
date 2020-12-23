@@ -9,6 +9,7 @@ class App extends React.Component {
 
   state = {
     temp: undefined,
+    tempFeels: undefined,
     city: undefined,
     country: undefined,
     pressure: undefined,
@@ -46,6 +47,7 @@ class App extends React.Component {
       
       this.setState({
         temp: data.main.temp,
+        tempFeels: data.main.feels_like,
         city: data.name,
         country: data.sys.country,
         pressure: pressureInMmHg,
@@ -58,6 +60,7 @@ class App extends React.Component {
     } else {
       this.setState({
         temp: undefined,
+        tempFeels: undefined,
         city: undefined,
         country: undefined,
         pressure: undefined,
@@ -73,7 +76,7 @@ class App extends React.Component {
   
 
   render () {
-    let classWeather = 'col-sm-4 info';
+    let classWeather = 'info';
     if (this.state.weather)
     {
     classWeather += ' '+this.state.weather;
@@ -98,11 +101,14 @@ class App extends React.Component {
       <div className="wrapper">
         <div className="main">
               <div className="container">
-                <div className="row">
+                <div className="window">
                   <div className={classWeather}>
-                    <Info />
+                    <Info
+                    tempFeels={this.state.tempFeels}
+                    temp={this.state.temp}
+                    />
                   </div>
-                  <div className="col-sm-8 form">
+                  <div className="form">
                     <Form weatherMethod={this.gettingWeather} />
                     <Weather 
                     temp={this.state.temp}

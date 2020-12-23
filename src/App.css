@@ -21,16 +21,33 @@ body {
 }
 
 .main {
-  height: 55vh;
+  height: 66vh;
   background: #2a6bb1;
   box-shadow: 0px 2px 80px -20px rgba(0,0,0,0.5);
-  width: 60%;
+  display: flex;
   margin: 0 auto;
+  width: 100%;
+  max-width: 1140px;
+}
+.container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
   max-width: 1140px;
 }
 
+.window {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin: 0 auto;
+  max-width: 1140px;
+ 
+}
+
 .info {
-  height: 55vh;
+  height: auto;
+  width:22vw;
   background: url("img/cards/18.error/7ad33c0e3434fb28fd5326cb8e841285.jpg") center center no-repeat;
   border: 2px solid #1f1f1f;
   border-right: 2px solid #131e29;
@@ -40,82 +57,14 @@ body {
   justify-content: center;
   text-align: center;
   color: #000;
-}
-.clearsky {
-  background: url("img/cards/2.Clear/a3716b9df5a01be1017705d30c171e97.jpg") center center no-repeat;
-  background-size: cover;
+  overflow: hidden;
 }
 
-.overcastclouds {
-  background: url("img/cards/9.Cloudy/5d7281ef993fd693a74c067b10cbe4bf.jpg") center center no-repeat;
-  background-size: cover;
-}
-
-.scatteredclouds.day {
-  background: url("img/cards/5.PartyCloudy/7f65837735e65c60f596eb19d2ec1a28.jpg") center center no-repeat;
-  background-size: cover;
-}
-
-.scatteredclouds.night {
-  background: url("img/cards/6.PartyCloudyNight/516e6460643aefb61bb2cfeb9bc06511.jpg") center center no-repeat;
-  background-size: cover;
-}
-
-.brokenclouds.day{
-  background: url("img/cards/5.PartyCloudy/2bde9d2129c3570ed4fc701a137e9eae.jpg") center center no-repeat;
-  background-size: cover;
-}
-
-.brokenclouds.night{
-  background: url("img/cards/6.PartyCloudyNight/b717f48ddcd65bebf8d4bd2b329ac166.jpg") center center no-repeat;
-  background-size: cover;
-}
-
-
-
-
-.lightshowersnow {
-  background: url("img/cards/14.LightSnow/e9d85b500365c9e3b7a5e717a534e07c.jpg") center center no-repeat;
-  background-size: cover;
-}
-
-.lightrain {
-  background: url("img/cards/10.LightRainShower/605df1a452895eb0d1d6e84dab6e27a6.jpg") center center no-repeat;
-  background-size: cover;
-}
-
-.lightintensityshowerrain {
-  background: url("img/cards/10.LightRainShower/605df1a452895eb0d1d6e84dab6e27a6.jpg") center center no-repeat;
-  background-size: cover;
-}
-
-.snow {
-  background: url("img/cards/19.Snow/5fa058b377481f2c89fb39300a62cf94.jpg") center center no-repeat;
-  background-size: cover;
-}
-
-.showersnow {
-  background: url("img/cards/20.RainSnow/f1b74d5c41f02e57fe0374cd913e5e6a.jpg") center center no-repeat;
-  background-size: cover;
-}
-
-.lightsnow {
-  background: url("img/cards/14.LightSnow/0a811f497e4fe5047fca279d9a6cbd2b.jpg") center center no-repeat;
-  background-size: cover;
-}
-
-.mist {
-  background: url("img/cards/17.Fog/ff788cccee005416ce6da1395c3879dc.jpg") center center no-repeat;
-  background-size: cover;
-}
-
-.fog {
-  background: url("img/cards/17.Fog/ff788cccee005416ce6da1395c3879dc.jpg") center center no-repeat;
-  background-size: cover;
-}
 
 .form {
-  height: 55vh;
+  height: auto;
+  width: 45vw;
+  max-width: 990px;
   padding-top: 100px;
   padding-left: 50px;
   border-top: 2px solid #113a65;
@@ -181,7 +130,7 @@ button:active {
 }
 
 .infoWeath {
-  width: 60%;
+  width: 58%;
   font-size: 20px;
   color: #fff;
 }
@@ -189,4 +138,74 @@ button:active {
 .error {
   color: #041f3c;
   font-weight: bold;
+}
+
+.clearsky {
+  background: url("img/cards/2.Clear/a3716b9df5a01be1017705d30c171e97.jpg") center center no-repeat;
+  background-size: cover;
+}
+
+.overcastclouds {
+  background: url("img/cards/9.Cloudy/5d7281ef993fd693a74c067b10cbe4bf.jpg") center center no-repeat;
+  background-size: cover;
+}
+
+.scatteredclouds.day {
+  background: url("img/cards/5.PartyCloudy/7f65837735e65c60f596eb19d2ec1a28.jpg") center center no-repeat;
+  background-size: cover;
+}
+
+.scatteredclouds.night {
+  background: url("img/cards/6.PartyCloudyNight/516e6460643aefb61bb2cfeb9bc06511.jpg") center center no-repeat;
+  background-size: cover;
+}
+
+.brokenclouds.day{
+  background: url("img/cards/5.PartyCloudy/2bde9d2129c3570ed4fc701a137e9eae.jpg") center center no-repeat;
+  background-size: cover;
+}
+
+.brokenclouds.night{
+  background: url("img/cards/6.PartyCloudyNight/b717f48ddcd65bebf8d4bd2b329ac166.jpg") center center no-repeat;
+  background-size: cover;
+}
+
+.lightshowersnow {
+  background: url("img/cards/14.LightSnow/e9d85b500365c9e3b7a5e717a534e07c.jpg") center center no-repeat;
+  background-size: cover;
+}
+
+.lightrain {
+  background: url("img/cards/10.LightRainShower/605df1a452895eb0d1d6e84dab6e27a6.jpg") center center no-repeat;
+  background-size: cover;
+}
+
+.lightintensityshowerrain {
+  background: url("img/cards/10.LightRainShower/605df1a452895eb0d1d6e84dab6e27a6.jpg") center center no-repeat;
+  background-size: cover;
+}
+
+.snow {
+  background: url("img/cards/19.Snow/5fa058b377481f2c89fb39300a62cf94.jpg") center center no-repeat;
+  background-size: cover;
+}
+
+.showersnow {
+  background: url("img/cards/20.RainSnow/f1b74d5c41f02e57fe0374cd913e5e6a.jpg") center center no-repeat;
+  background-size: cover;
+}
+
+.lightsnow {
+  background: url("img/cards/14.LightSnow/0a811f497e4fe5047fca279d9a6cbd2b.jpg") center center no-repeat;
+  background-size: cover;
+}
+
+.mist {
+  background: url("img/cards/17.Fog/ff788cccee005416ce6da1395c3879dc.jpg") center center no-repeat;
+  background-size: cover;
+}
+
+.fog {
+  background: url("img/cards/17.Fog/ff788cccee005416ce6da1395c3879dc.jpg") center center no-repeat;
+  background-size: cover;
 }

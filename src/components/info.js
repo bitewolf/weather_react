@@ -1,9 +1,9 @@
 import React from "react";
 
-const Info = () => (
+const Info = props => (
     <div>
-        <h2>Погодное приложение</h2>
-        <p>Узнайте погоду в вашем городе!</p>
+        <p>{props.temp} °C</p>
+        <p>Ощущается как:{props.tempFeels} °C</p>
     </div>
 );
 
